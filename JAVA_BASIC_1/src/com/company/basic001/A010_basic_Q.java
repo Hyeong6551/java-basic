@@ -34,5 +34,9 @@ public class A010_basic_Q {
 		//66
 		//B
 		//B
+		
+		int test1=3, testb=10;
+		System.out.println(testb += 10 - test1++);	//17
+		System.out.println(test1 += 5);				//9
 	}
 }

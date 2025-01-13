@@ -1,8 +1,8 @@
-package com.company.basic002;
+package com.company.basic003;
 
 import java.util.Scanner;
 
-public class B001 {
+public class Bank_project {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("WELCOM! (주)CODE BANK");
@@ -12,7 +12,7 @@ public class B001 {
 		String id = " ", pw = " ", id_check=" ", pw_check=" ";
 		int age=0,cash=0,get_cash=0;
 		
-		while(run) {
+		for(;run;) {
 			System.out.println("======BANK======");
 			System.out.println("* 1.추가\n* 2.조회\n* 3.입급\n* 4.출금\n* 5.삭제\n* 9.종료");
 			int num = sc.nextInt();
@@ -70,12 +70,16 @@ public class B001 {
 				if(!id.equals(id_check) || !pw.equals(pw_check)) {
 					System.out.println("다시 확인해주세요");
 				} else {
-					System.out.print("출급 : ");
+					System.out.print("출금 : ");
 					get_cash = sc.nextInt();
+					if (cash < get_cash ) {
+						System.out.println("잔액이 부족합니다.");
+						continue;
+					}
 					cash -= get_cash;
 					System.out.println("==출금완료\n잔액 : "+cash);
+					}
 				}
-			}
 			
 			// 5. 삭제
 			if(num==5) {
@@ -94,7 +98,7 @@ public class B001 {
 					} else if(YorN=='n' || YorN=='N') {
 						continue;
 					} else {
-						System.out.println("올바른 값을 입력해주세요");
+						System.err.println("올바른 값을 입력해주세요");
 					}
 				}
 			}

@@ -2,7 +2,18 @@ package com.company.basic003;
 
 import java.util.Scanner;
 
-public class Bank_project {
+public class Bank_project2 {
+	public static String Check(String id_checks, String pw_checks) {
+		Scanner sc = new Scanner(System.in);
+	    
+		System.out.print("id : ");
+		id_checks = sc.next();
+		System.out.print("pw : ");
+		pw_checks = sc.next();
+		
+		return Check(id_checks, pw_checks);
+	}
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("WELCOM! (주)CODE BANK");
@@ -10,10 +21,10 @@ public class Bank_project {
 		boolean run = true;
 		char YorN='\u0000';
 		String id = " ", pw = " ", id_check=" ", pw_check=" ";
-		int age=0,cash=0,get_cash=0;
+		int age=0,cash=0,get_cash=0;		
 		
 		for(;run;) {
-			System.out.println("======BANK======");
+			System.out.println("======BANK2======");
 			System.out.println("* 1.추가\n* 2.조회\n* 3.입급\n* 4.출금\n* 5.삭제\n* 9.종료");
 			int num = sc.nextInt();
 			
@@ -38,11 +49,7 @@ public class Bank_project {
 			
 			// 2. 조회
 			else if(num==2) {
-				System.out.print("id : ");
-				id_check = sc.next();
-				System.out.print("pw : ");
-				pw_check = sc.next();
-				
+				String idCheck = Check(id_check,pw_check);
 				if(!id.equals(id_check) || !pw.equals(pw_check)) {
 					System.out.println("다시 확인해주세요");
 				} else {

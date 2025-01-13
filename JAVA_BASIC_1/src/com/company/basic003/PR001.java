@@ -2,7 +2,7 @@ package com.company.basic003;
 
 import java.util.Scanner;
 
-public class P001 {
+public class PR001 {
 	public static void main(String[] args ) {
 		//Q1~2
 		Scanner sc = new Scanner(System.in);
@@ -11,6 +11,7 @@ public class P001 {
 		
 		System.out.println("a,b,c 중에 한개의 문자를 입력하시오");
 		n = sc.next().charAt(n);
+		sc.close();
 		
 		switch (n) {
 			case 'a' : 

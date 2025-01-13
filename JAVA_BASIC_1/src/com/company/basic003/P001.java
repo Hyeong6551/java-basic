@@ -1,8 +1,8 @@
-package com.company.basic002;
+package com.company.basic003;
 
 import java.util.Scanner;
 
-public class C001 {
+public class P001 {
 	public static void main(String[] args ) {
 		//Q1~2
 		Scanner sc = new Scanner(System.in);

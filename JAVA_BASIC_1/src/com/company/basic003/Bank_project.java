@@ -22,7 +22,7 @@ public class Bank_project {
 				System.out.print("아이디 입력 : ");
 				id = sc.next();
 				System.out.print("비밀번호 입력 : ");
-				pw = sc.next();
+				pw = sc.next();  
 				System.out.print("나이 입력 : ");
 				age = sc.nextInt();
 				System.out.print("잔액 입력 : ");

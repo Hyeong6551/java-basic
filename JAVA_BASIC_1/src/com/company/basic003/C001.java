@@ -17,7 +17,7 @@ public class C001 {
 			case 'A' : System.out.println("apple");  break;
 			case 'b' : 
 			case 'B' : System.out.println("banana"); break;
-			case 'c' : 
+			case 'c' :  
 			case 'C' : System.out.println("coconut"); break;
 			default : System.err.println("ERROR");
 		}

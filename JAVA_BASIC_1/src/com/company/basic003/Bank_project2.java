@@ -3,17 +3,6 @@ package com.company.basic003;
 import java.util.Scanner;
 
 public class Bank_project2 {
-	public static String Check(String id_checks, String pw_checks) {
-		Scanner sc = new Scanner(System.in);
-	    
-		System.out.print("id : ");
-		id_checks = sc.next();
-		System.out.print("pw : ");
-		pw_checks = sc.next();
-		
-		return Check(id_checks, pw_checks);
-	}
-	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("WELCOM! (주)CODE BANK");
@@ -49,7 +38,11 @@ public class Bank_project2 {
 			
 			// 2. 조회
 			else if(num==2) {
-				String idCheck = Check(id_check,pw_check);
+				System.out.print("id : ");
+				id_check = sc.next();
+				System.out.print("pw : ");
+				pw_check = sc.next();
+				
 				if(!id.equals(id_check) || !pw.equals(pw_check)) {
 					System.out.println("다시 확인해주세요");
 				} else {

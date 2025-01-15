@@ -14,14 +14,15 @@ public class Bank_project2 {
 		
 		for(;run;) {
 			System.out.println("======BANK2======");
-			System.out.println("* 1.추가\n* 2.조회\n* 3.입급\n* 4.출금\n* 5.삭제\n* 9.종료");
+			System.out.print("* 1.추가\n* 2.조회\n* 3.입급\n* 4.출금\n* 5.삭제\n* 9.종료\n입력>>>");
 			int num = sc.nextInt();
+			System.out.println();
 			
 			// 9. 종료
 			if(num==9) {
 				System.out.println("종료기능 입니다.");
 				sc.close();
-				run = false;
+				break;
 			}
 			
 			// 1. 추가
@@ -109,6 +110,9 @@ public class Bank_project2 {
 						default : System.err.println("Error"); continue;
 					} 
 				}
+			}
+			else {
+				System.err.println("error");
 			}
 		}
 	}

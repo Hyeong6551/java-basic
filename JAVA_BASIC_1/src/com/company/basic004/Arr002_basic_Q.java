@@ -44,5 +44,13 @@ public class Arr002_basic_Q {
 			}
 		}
 		System.out.println("모음의 갯수 : "+cnt);
+		
+		//ex
+		int sum = 0;
+		int [] abc = {1,2,3,5};
+		for(int i=0;i<abc.length;i++) {
+			sum += abc[i];
+		}
+		System.out.println(sum);
 	}
 }

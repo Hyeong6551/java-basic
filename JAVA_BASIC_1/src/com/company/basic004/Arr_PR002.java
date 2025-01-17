@@ -25,13 +25,13 @@ public class Arr_PR002 {
 //			sum=0;
 //		}
 		
-		for(int i=0;i<datas.length;i++) {
-			for(int j=0;j<datas[i].length;j++){
-				sum += datas[j][i+1];
-				result[i][j] = sum;
-			}
-			sum=0;
-		}
+//		for(int i=0;i<datas.length;i++) {
+//			for(int j=0;j<datas[i].length;j++){
+//				result[i][j] = datas[i][j]; 
+//				
+//			}
+//			sum=0;
+//		}
 		
 		for(int i=0;i<result.length;i++) {
 			for(int j=0;j<result[i].length;j++){

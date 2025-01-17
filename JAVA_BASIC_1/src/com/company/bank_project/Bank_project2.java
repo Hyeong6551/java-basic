@@ -2,12 +2,13 @@ package com.company.bank_project;
 
 import java.util.Scanner;
 
-class id_check {	// 사용자 정보 확인용
+class id_check {			// 사용자 정보 확인용
 	Scanner sc = new Scanner(System.in);
 	String id_check, pw_check, id,pw;
+	boolean check;
 	int age, cash;
 	
-	void make_id() {	// id 만들기
+	void make_id() {		// id 만들기
 		System.out.print("아이디 입력 : ");
 		id = sc.next();
 		System.out.print("비밀번호 입력 : ");
@@ -18,11 +19,17 @@ class id_check {	// 사용자 정보 확인용
 		cash = sc.nextInt();
 	}
 	
-	void idpw_check() {	// id 조회용
+	void idpw_check() {		// id 조회용
 		System.out.print("id : ");
 		id_check = sc.next();
 		System.out.print("pw : ");
 		pw_check = sc.next();
+		
+		if((!id.equals(id_check) || !pw.equals(pw_check)) && check==false) {
+			System.out.println("다시 확인해주세요");
+		} else {
+			check= true;
+		}
 	}
 }
 
@@ -35,8 +42,7 @@ public class Bank_project2 {
 		
 		boolean run = true;
 		char YorN='\u0000';
-		String id = " ", pw = " ", id_check=" ", pw_check=" ";
-		int age=0,cash=0,get_cash=0;		
+		int get_cash=0;		
 		
 		for(;run;) {
 			System.out.println("======BANK2======");
@@ -57,60 +63,55 @@ public class Bank_project2 {
 				switch(num) {
 					case 2 :			// 2. 조회 
 						idpw.idpw_check();
-						if(!id.equals(id_check) || !pw.equals(pw_check)) {
-							System.out.println("다시 확인해주세요"); 
-						} else {
-							System.out.printf("==계좌조회\nID : %s\nPass : %s\n나이 : %d\n잔액 : %d\n",idpw.id,idpw.pw,idpw.age,idpw.cash); continue;
-						}
+						
+						if(idpw.check==true) {
+							System.out.printf("==계좌조회\nID : %s\nPass : %s\n나이 : %d\n잔액 : %d\n",idpw.id,idpw.pw,idpw.age,idpw.cash); 
+							idpw.check=false; break;
+						} else { break; }
 					case 3 :			// 3. 입금
 						idpw.idpw_check();
 
-						if(!id.equals(id_check) || !pw.equals(pw_check)) {
-							System.out.println("다시 확인해주세요");
-						} else {
+						if(idpw.check==true) {
 							System.out.print("입금 : ");
 							get_cash = sc.nextInt();
-							cash += get_cash;
-							System.out.println("==입금완료\n잔액 : "+cash);
-						}
+							if(get_cash < 0) {
+								System.out.println("입금을 할 수 없습니다."); idpw.check=false; break;
+							}
+							idpw.cash += get_cash;
+							System.out.println("==입금완료\n잔액 : "+idpw.cash);
+							idpw.check=false; break;
+						} else { break; }
 					case 4 :			// 4. 출금
-						System.out.print("id : ");
-						id_check = sc.next();
-						System.out.print("pw : ");
-						pw_check = sc.next();
-						
-						if(!id.equals(id_check) || !pw.equals(pw_check)) {
-							System.out.println("다시 확인해주세요");
-						} else {
+						idpw.idpw_check();
+
+						if(idpw.check==true) {
 							System.out.print("출금 : ");
 							get_cash = sc.nextInt();
-							if (cash < get_cash ) {
+							if (idpw.cash < get_cash ) {
 								System.out.println("잔액이 부족합니다.");
-								continue;
+								break;
+							} else if (get_cash < 0) {
+								System.out.println("출금을 할 수 없습니다.");
 							}
-							cash -= get_cash;
-							System.out.println("==출금완료\n잔액 : "+cash);
-							}
+							idpw.cash -= get_cash;
+							System.out.println("==출금완료\n잔액 : "+idpw.cash);
+							idpw.check=false; break;
+						} else { break; }
 					case 5 :			// 5. 삭제
-						System.out.print("id : ");
-						id_check = sc.next();
-						System.out.print("pw : ");
-						pw_check = sc.next();
-						
-						if(!id.equals(id_check) || !pw.equals(pw_check)) {
-							System.out.println("다시 확인해주세요");
-						} else {
+						idpw.idpw_check();
+
+						if(idpw.check==true) {
 							System.out.print("계좌를 삭제하시겠습니까? (Y/N)");
 							YorN = sc.next().charAt(0);
 							switch (YorN) {
 								case 'y' :
-								case 'Y' : id=" "; pw=" "; cash=' '; age=' '; YorN=' ';
-										System.out.println("계좌 삭제 완료"); continue;
+								case 'Y' : idpw.id=" "; idpw.pw=" "; idpw.cash=' '; idpw.age=' '; YorN=' ';
+										System.out.println("계좌 삭제 완료"); idpw.check=false; break; 
 								case 'n' : 
-								case 'N' : continue;
-								default : System.err.println("Error"); continue;
+								case 'N' : idpw.check=false; break;
+								default : System.err.println("Error"); idpw.check=false; break;
 							} 
-						}
+						} else { break; }
 					}
 				} 
 			else { System.err.println("error");}

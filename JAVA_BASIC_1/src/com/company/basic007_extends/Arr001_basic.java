@@ -1,4 +1,4 @@
-package com.company.basic007;
+package com.company.basic007_extends;
 
 import java.util.Arrays;
 
@@ -14,10 +14,10 @@ class A{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAge() {
+	public int getage() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setage(int age) {
 		this.age = age;
 	}
 	@Override
@@ -50,7 +50,7 @@ public class Arr001_basic {
 		for(int i=0;i<arr.length;i++) {
 			arr[i] = new A();
 			arr[i].setName("a"+i);
-			arr[i].setAge(i*10);
+			arr[i].setage(i*10);
 			System.out.println(arr[i]);
 		}
 	}

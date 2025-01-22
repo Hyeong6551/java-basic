@@ -1,4 +1,4 @@
-package com.company.basic008;
+package com.company.basic008_polymorphism;
 
 /*
  * Q1. 상속도

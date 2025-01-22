@@ -1,4 +1,4 @@
-package com.company.basic007;
+package com.company.basic007_extends;
 
 import java.util.Scanner;
 

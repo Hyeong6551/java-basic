@@ -33,6 +33,7 @@ class id_check {			// 사용자 정보 확인용
 	}
 }
 
+
 public class Bank_project2 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

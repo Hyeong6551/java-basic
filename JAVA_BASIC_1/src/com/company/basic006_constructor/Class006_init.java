@@ -1,4 +1,4 @@
-package com.company.basic006;
+package com.company.basic006_constructor;
 
 //1. 클래스는 부품객체
 //2. 클래스 상태(멤버변수) + 행위(멤버함수)

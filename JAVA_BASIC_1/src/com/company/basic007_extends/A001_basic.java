@@ -1,4 +1,4 @@
-package com.company.basic007;
+package com.company.basic007_extends;
 
 // 3. 클래스에 final을 붙이면 - 자삭에서 extends가 안됨 (상속 불가)
 class FinalEx extends Object{	// Object는 java가 이런 객체 틀로 만들어놓음

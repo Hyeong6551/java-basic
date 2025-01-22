@@ -1,4 +1,4 @@
-package com.company.basic007;
+package com.company.basic007_extends;
 
 public class A002_basic_package {	// extends Cat을 했으면 protected 가능
 	public static void main(String[] args) {

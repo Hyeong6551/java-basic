@@ -1,4 +1,4 @@
-package com.company.basic006;
+package com.company.basic006_constructor;
 
 class AnimalFarm{
 	// 멤버변수

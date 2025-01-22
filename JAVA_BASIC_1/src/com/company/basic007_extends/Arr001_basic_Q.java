@@ -1,4 +1,4 @@
-package com.company.basic007;
+package com.company.basic007_extends;
 
 /*
  * Q1. Score 클래스 만들기 (부품객체)

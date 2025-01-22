@@ -1,4 +1,4 @@
-package com.company.basic007;
+package com.company.basic007_extends;
 
 // Q. 다음코드에서 오류나는 부분을 찾아 주석달고 이유를 적으시오.
 // A. user1.nation / user1.jumin 

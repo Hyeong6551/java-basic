@@ -1,21 +1,21 @@
-package com.company.basic006;
+package com.company.basic006_constructor;
 
-class MyPrice002{
+class Myage002{
 	String name;
-	int price;
+	int age;
 	
-	public MyPrice002() {
+	public Myage002() {
 		this.name = "갤럭시노트12";
-		this.price = 110000;
+		this.age = 110000;
 	}
 
 	void show(){
-		System.out.printf("상품이름 : %s\n상품가격 : %d",name,price);
+		System.out.printf("상품이름 : %s\n상품가격 : %d",name,age);
 	}
 }
 public class A001_basic_Q2 {
 	public static void main(String[] args) {
-		MyPrice002 product = new MyPrice002();
+		Myage002 product = new Myage002();
 		product.show();
 	}
 }

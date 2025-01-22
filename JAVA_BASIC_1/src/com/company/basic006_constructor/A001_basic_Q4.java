@@ -1,4 +1,4 @@
-package com.company.basic006;
+package com.company.basic006_constructor;
 
 class UserCard03{
 	int cardNum;				// 인스턴스변수	- heap area - new - this.cardNum 

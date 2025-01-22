@@ -1,4 +1,4 @@
-package com.company.basic007;
+package com.company.basic007_extends;
 
 public class PR002 {
 	public static void main(String[] args) {

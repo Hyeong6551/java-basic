@@ -1,4 +1,4 @@
-package com.company.basic008;
+package com.company.basic008_polymorphism;
 
 class MobileNote7 extends Object{
 	private String iris;

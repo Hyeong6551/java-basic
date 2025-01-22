@@ -1,4 +1,4 @@
-package com.company.basic008;
+package com.company.basic008_polymorphism;
 
 class AA1 extends Object{
 	int a;

@@ -1,4 +1,4 @@
-package com.company.basic008;
+package com.company.basic008_polymorphism;
 
 class Grand extends Object{
 	public void one() { System.out.println("grand : one"); }

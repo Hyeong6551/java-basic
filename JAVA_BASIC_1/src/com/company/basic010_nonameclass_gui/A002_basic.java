@@ -1,4 +1,4 @@
-package com.company.basic010_nonameclass;
+package com.company.basic010_nonameclass_gui;
 
 interface Inter1{ void method(); }	//public abstract
 class Inter1Impl implements Inter1{		// 한번만 쓰고 버릴거면 이런형식으로 쓸 필요없음

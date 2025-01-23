@@ -1,7 +1,5 @@
 package com.company.selftest;
 
-import java.util.Scanner;
-
 public class test015 {
 	public static void main(String[] args) {
 		//SelfTest015

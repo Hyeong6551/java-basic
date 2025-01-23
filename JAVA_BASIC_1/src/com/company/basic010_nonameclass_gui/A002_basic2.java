@@ -1,4 +1,4 @@
-package com.company.basic010_nonameclass;
+package com.company.basic010_nonameclass_gui;
 
 interface Calc{ public double exec(double num1, double num2); }
 

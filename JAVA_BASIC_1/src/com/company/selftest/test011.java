@@ -13,6 +13,6 @@ public class test011 {
 			i = sc.nextInt();
 			continue;
 		}
-		System.out.println("벗어남");
+		System.out.println("end");
 	}
 }

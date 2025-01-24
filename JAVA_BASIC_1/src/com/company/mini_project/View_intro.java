@@ -13,10 +13,11 @@ class  View_intro{
 		this.button= new JButton("WELCOME!");
 	}
 	public void show() {  //frame.add / frame.setSize / frame.setVisible
-		button.setBackground(Color.BLACK);
-		button.setForeground(Color.CYAN);
+		button.setBackground(new Color(111, 237, 120));
+		button.setForeground(new Color(113, 120, 37));
 		button.setFont(new Font(Font.MONOSPACED , Font.BOLD,25));
 		
+		frame.setLocation(300, 300);
 		frame.add(button);
 		frame.setSize(300,200);
 		frame.setVisible(true);

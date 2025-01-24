@@ -50,6 +50,7 @@ class View_crud{
 		//Q6. setSize   400,300
 		frame.setSize(400,300);
 		//Q7. setVisible true
+		frame.setLocation(300, 300);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

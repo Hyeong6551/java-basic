@@ -8,4 +8,10 @@ class InfoRead implements InfoProcess {
 		System.out.println("2. 조회기능입니다.");
 		for( U_Info u  : users) { System.out.println(u); }
 	}
+
+	@Override
+	public void exec(ArrayList<U_Info> users, View_crud crud) {
+
+		
+	}
 }

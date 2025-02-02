@@ -1,4 +1,4 @@
-package com.companay.basic007_etc;
+package com.company.basic007_etc;
 
 public class Milk {
    private int  mno;   

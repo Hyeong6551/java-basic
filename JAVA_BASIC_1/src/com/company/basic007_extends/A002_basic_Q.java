@@ -1,6 +1,6 @@
 package com.company.basic007_extends;
 
-import com.companay.basic007_etc.Milk;
+import com.company.basic007_etc.Milk;
 
 public class A002_basic_Q {
 	public static void main(String[] args) {

@@ -46,7 +46,7 @@ public class A001_basic_Q3 {
 
 /*  RUNTIMEDATA AREA    
 -------------------------------------------------------------
-[method: 정보, static, final]		AnimalFarm, A001_basic_Q2 / company, num, boss, location, num_plus()
+[method: 정보, static, final]		AnimalFarm, A001_basic_Q3 / company, num, boss, location, num_plus()
 -------------------------------------------------------------
 [heap:동적]                       |[stack: 잠깐빌리기]
 1번지 AnimalFarm

@@ -1,6 +1,6 @@
 package com.company.basic007_extends;
 
-import com.companay.basic007_etc.Cat;
+import com.company.basic007_etc.Cat;
 
 public class A002_basic_public {
 	public static void main(String[] args) {

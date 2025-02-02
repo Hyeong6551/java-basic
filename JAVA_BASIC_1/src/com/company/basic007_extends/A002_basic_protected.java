@@ -1,6 +1,6 @@
 package com.company.basic007_extends;
 
-import com.companay.basic007_etc.Cat;
+import com.company.basic007_etc.Cat;
 
 class Cat2 extends Cat {		// Cat 기존 → Cat2 [Cat의 기능을 끌어다가 사용]
 	public Cat2() {	super(); }	//alt + shift + s

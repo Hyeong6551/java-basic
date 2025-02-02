@@ -1,4 +1,4 @@
-package com.companay.basic007_etc;
+package com.company.basic007_etc;
 
 public class Cat {
 	private   int pri;	//private - Cat 클래스 내부에서만 사용

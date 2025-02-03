@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 class use_Book_mvc{
 	// model
-	ArrayList<Book_Info> list;
+	ArrayList<BookInfo> list;
 	
 	// view
 	View_Intro_Page intro;

@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-class View_Admin_Page extends View_Common_Page{
+class View_Admin_crud extends View_Common_Page{
 	// 테이블
 	String [] column;	Object[][] rowData;
 	DefaultTableModel model;
@@ -21,7 +21,7 @@ class View_Admin_Page extends View_Common_Page{
 	JPanel ad_panel;
 	
 	// 생성자
-	public View_Admin_Page() {
+	public View_Admin_crud() {
 		ad_panel = new JPanel();
 		ad_button = new JButton[] { new JButton("책 추가"), new JButton("책 삭제"), new JButton("책 변경"), new JButton("책 삭제") };
 	

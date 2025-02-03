@@ -11,13 +11,13 @@ class use_Book_mvc{
 	// view
 	View_Intro_Page intro;
 	View_Common_Page common; 
-	View_Admin_Page admin;
+	View_Admin_crud admin;
 	View_User_Page user;
 
 	public use_Book_mvc() {
 		intro = new View_Intro_Page();		intro.Show_Intro();
 		common = new View_Common_Page();
-		admin = new View_Admin_Page();
+		admin = new View_Admin_crud();
 		user = new View_User_Page();
 	}
 	

@@ -11,8 +11,8 @@ class BookInfo {
 	public void setNo(int no) { this.no = no; }
 	public String getTitle() { return title; }
 	public void setTitle(String title) { this.title = title; }
-	public String getBookAuthor() { return author; }
-	public void setBookAuthor(String author) { this.author = author; }
+	public String getAuthor() { return author; }
+	public void setAuthor(String author) { this.author = author; }
 	public String getPublisher() { return publisher; }
 	public void setPublisher(String publisher) { this.publisher = publisher; }
 	

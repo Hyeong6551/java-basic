@@ -3,7 +3,7 @@ package com.company.portfolio;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class test001 {
+public class Test001 {
 	public static void main(String[] args) {
 		// 0. UserInfo test
 		UserInfo user = new UserInfo("first","first@gmail.com");

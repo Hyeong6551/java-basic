@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 class BookCreate implements BookProcess{
+
+	@Override
+	public void exec(ArrayList<BookInfo> books) {
+		// TODO Auto-generated method stub
+		
+	}
 	@Override
 	public void exec(ArrayList<BookInfo> books, View_Admin_crud ad_crud) {
 		String title = JOptionPane.showInputDialog("책 제목을 입력해주세요");

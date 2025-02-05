@@ -1,6 +1,8 @@
 package com.company.project;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
@@ -8,7 +10,10 @@ class BookDelete implements BookProcess{
 
 	@Override
 	public void exec(ArrayList<BookInfo> books) {
-		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Book no? > ");	int num = sc.nextInt();
+		
+		Iterator<BookInfo> iter = books.iterator();
 		
 	}
 	@Override

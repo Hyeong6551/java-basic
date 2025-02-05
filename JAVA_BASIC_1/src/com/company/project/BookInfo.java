@@ -16,6 +16,10 @@ class BookInfo {
 	public String getPublisher() { return publisher; }
 	public void setPublisher(String publisher) { this.publisher = publisher; }
 	
+	public BookInfo() { super(); }
+	
+	public BookInfo(int no) { super(); this.no = no; }
+	
 	public BookInfo(int cnt, int no, String title, String author, String publisher) {
 		super();
 		BookInfo.cnt = cnt;

@@ -1,6 +1,8 @@
 package com.company.project;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
@@ -8,8 +10,21 @@ class BookUpdate implements BookProcess {
 
 	@Override
 	public void exec(ArrayList<BookInfo> books) {
-		// TODO Auto-generated method stub
-		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("book no? >");		int num = sc.nextInt();
+		Iterator <BookInfo> iter = books.iterator();
+		while(iter.hasNext()) {
+			BookInfo b = iter.next();
+			if(b.getNo() != num) {
+				System.out.println("존재하지 않는 번호입니다.");
+			} else {
+				System.out.print("book title? > ");		String title = sc.next();
+				System.out.print("book author > ");		String author = sc.next();
+				System.out.print("book publisher > ");	String publisher = sc.next();
+				
+				b.setTitle(title);	b.setAuthor(author);  b.setPublisher(publisher);  break;
+			}
+		}
 	}
 	@Override
 	public void exec(ArrayList<BookInfo> books, View_Admin_crud ad_crud) {

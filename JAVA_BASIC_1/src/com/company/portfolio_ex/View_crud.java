@@ -1,4 +1,4 @@
-package com.company.portfolio;
+package com.company.portfolio_ex;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,7 +30,7 @@ public class View_crud {
 		};
 		
 		column = new String[] {"No","Name","Email","Date"};
-		rowData = new Object[][] {{"1","No Named","aaa@gmail.com","2020"},{"2","kanye west","bbb@gmail.com","2022"}};
+		rowData = new Object[][] {};
 		model = new DefaultTableModel(rowData, column);
 		table = new JTable(model);
 		scroll = new JScrollPane(table);

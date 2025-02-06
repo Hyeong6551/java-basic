@@ -16,5 +16,4 @@ class BookRead implements BookProcess{
 		int delNum = Integer.parseInt(JOptionPane.showInputDialog("조회할 책을 입력해주세요"));
 		
 	}
-
 }

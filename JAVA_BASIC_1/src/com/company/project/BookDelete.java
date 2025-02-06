@@ -14,27 +14,34 @@ class BookDelete implements BookProcess{
 		System.out.print("Book no? > ");	int num = sc.nextInt();
 		
 		Iterator<BookInfo> iter = books.iterator();
+		while(iter.hasNext()) {
+			BookInfo b = iter.next();
+			if(b.getNo() != num) {
+				System.out.println("존재하지 않는 번호 입니다.");
+			} else {
+				iter.remove();
+				System.out.println("삭제완료");
+			}
+		}
 		
 	}
 	@Override
 	public void exec(ArrayList<BookInfo> books, View_Admin_crud ad_crud) {
 		int delNum = Integer.parseInt(JOptionPane.showInputDialog("삭제할 책 번호를 입력해주쉐요"));
 		int findNum = -1;
-		for(int i=0;i<books.size();i++) {
-			BookInfo temp = books.get(i);
-			if(temp.getNo()==delNum) {
-				findNum = i;
-				break;
-			}
+		int cnt=0;
+		Iterator <BookInfo> iter = books.iterator();
+		while(iter.hasNext()) {
+			if(iter.next().getNo() == delNum ) {findNum = cnt; iter.remove(); break; }
+			cnt++;
 		}
-		
-		// 잘못된 번호를 입력할 경우 - 존재하지 않는 번호
+
 		// 입력한 번호가 대출받은 책이라면 - 삭제가 불가능한 책
 		if(findNum==-1) {
 			JOptionPane.showMessageDialog(null, "존재하지 않는 번호입니다."); return;
 		} else {
-			ad_crud.model.removeRow(findNum);
+			ad_crud.model.removeRow(cnt);
+			findNum=-1;
 		}
 	}
-	
 }

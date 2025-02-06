@@ -1,8 +1,8 @@
-package com.company.portfolio;
+package com.company.portfolio_ex;
 
 import java.util.ArrayList;
 
 interface UserProcess {
 	void exec( ArrayList<UserInfo> user ); 
-	void exec( ArrayList<UserInfo> user, UserView view ); 
+	void exec( ArrayList<UserInfo> user, View_crud crud ); 
 }

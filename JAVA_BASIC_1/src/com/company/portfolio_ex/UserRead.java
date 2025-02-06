@@ -1,4 +1,4 @@
-package com.company.portfolio;
+package com.company.portfolio_ex;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,9 +16,5 @@ class UserRead implements UserProcess {
 	}
 
 	@Override
-	public void exec(ArrayList<UserInfo> user, UserView view) {
-		// TODO Auto-generated method stub
-
-	}
-
+	public void exec(ArrayList<UserInfo> user, View_crud crud) {	}
 }

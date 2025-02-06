@@ -25,7 +25,6 @@ class BookCreate implements BookProcess{
 		String publisher = JOptionPane.showInputDialog("출판사를 입력해주세요");
 		
 		books.add(new BookInfo(title, author, publisher));
-		
 		Object[] data = { BookInfo.cnt, title, author, publisher };
 		ad_crud.model.addRow(data);
 	}

@@ -1,4 +1,4 @@
-package com.company.portfolio;
+package com.company.portfolio_ex;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,7 +28,7 @@ public class View_intro {
 //		icon = new ImageIcon("images\\together.png");
 		icon = new ImageIcon("images\\artwork.jpg");
 		label = new JLabel(icon);
-		buttons = new JButton[] { new JButton("자원봉사자등록"), new JButton("후원하기") };
+		buttons = new JButton[] { new JButton("자원봉사자등록"), new JButton("<html><body><center>상수형에게 <br>후원하기</html></body></center>") };
 		
 		//
 		for(int i=0;i<buttons.length;i++) {

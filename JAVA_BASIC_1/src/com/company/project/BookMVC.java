@@ -7,7 +7,7 @@ import java.util.ArrayList;
 class use_Book_mvc{
 	// model
 	ArrayList<BookInfo> books;
-	ArrayList<myBookInfo> myBooks;
+	ArrayList<MyBookInfo> myBooks;
 	
 	// view
 	View_Intro_Page intro;
@@ -17,9 +17,7 @@ class use_Book_mvc{
 	// controller
 	BookProcess controller;
 	BookProcess[] process;
-	myBookProcess myController;
-	myBookProcess[] myProcess;
-	
+
 	// constructor
 	public use_Book_mvc() {
 		books = new ArrayList<>();
@@ -29,8 +27,11 @@ class use_Book_mvc{
 		admin = new View_Admin_crud();
 		user = new View_User_crud();
 		
-		process = new BookProcess[] {new BookCreate(), new BookUpdate(), new BookDelete()};
-		myProcess = new myBookProcess[] {new myBookBorrow()};
+		process = new BookProcess[] {
+				new BookCreate(), new BookUpdate(), 
+				new BookDelete(), new MyBookBorrow(),
+				new MyBookReturn()
+		};
 	}
 	
 	// 행위 - 기능 - 멤버함수
@@ -66,21 +67,21 @@ class use_Book_mvc{
 		admin.ad_button[0].addActionListener(new ActionListener() {		// 책 추가
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[0];	controller.exec(books, admin);
+				controller = process[0];	controller.exec(books, myBooks, admin, user);
 			}
 		});
 		
 		admin.ad_button[1].addActionListener(new ActionListener() {		// 책 변경
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[1];	controller.exec(books, admin);
+				controller = process[1];	controller.exec(books, myBooks, admin, user);
 			}
 		});
 		
 		admin.ad_button[2].addActionListener(new ActionListener() {		// 책 삭제
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[2];	controller.exec(books, admin);
+				controller = process[2];	controller.exec(books, myBooks, admin, user);
 			}
 		});
 		
@@ -103,6 +104,20 @@ class use_Book_mvc{
 	
 	//////////////////////////////////////		사용자 페이지
 	public void start_User() {
+		user.usr_button[0].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller = process[3];	controller.exec(books, myBooks, admin, user);
+			}
+		});
+		
+		user.usr_button[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller = process[4];	controller.exec(books, myBooks, admin, user);
+			}
+		});
+		
 		user.usr_button[3].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -121,7 +136,7 @@ class use_Book_mvc{
 	}
 }
 
-public class  Book_mvc {
+public class BookMVC {
 	public static void main(String[] args) {
 		use_Book_mvc mvc = new use_Book_mvc();
 		mvc.start_Intro();

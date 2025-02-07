@@ -6,6 +6,7 @@ class BookInfo {
 	private String title;
 	private String author;
 	private String publisher;
+	private boolean bookState;
 	
 	public int getNo() { return no; }
 	public void setNo(int no) { this.no = no; }
@@ -15,28 +16,34 @@ class BookInfo {
 	public void setAuthor(String author) { this.author = author; }
 	public String getPublisher() { return publisher; }
 	public void setPublisher(String publisher) { this.publisher = publisher; }
+	public boolean isBookState() { return bookState; } public void setBookState(boolean bookState) { this.bookState = bookState; }
 	
 	public BookInfo() { super(); }
-	
 	public BookInfo(int no) { super(); this.no = no; }
-	
-	public BookInfo(int cnt, int no, String title, String author, String publisher) {
+	public BookInfo(int no, String title, String author, String publisher, boolean bookState) {
 		super();
-		BookInfo.cnt = cnt;
 		this.no = no;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
+		this.bookState = bookState;
 	}
-	public BookInfo(String title, String author, String publisher) {
+	
+	public BookInfo(String title, String author, String publisher, boolean bookState) {
 		super();
 		this.no = ++cnt;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
+		this.bookState = bookState;
 	}
 	
 	@Override
-	public String toString() { return "BookInfo [cnt=" + cnt + ", no=" + no + ", Title=" + title + ", bookAuthor=" + author + ", publisher=" + publisher + "]\n"; }
+	public String toString() {
+		return "BookInfo [no=" + no + ", title=" + title + ", author=" + author + ", publisher=" + publisher
+				+ ", bookState=" + bookState + "]";
+	}
+	
+
 
 }

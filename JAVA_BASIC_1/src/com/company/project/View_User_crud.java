@@ -25,9 +25,13 @@ class View_User_crud {
 	JButton[] usr_button;
 	JPanel usr_panel;
 	
+	View_Admin_crud ad_crud;
+	
 	// 생성자
 	public View_User_crud() {	// 버튼 및 테이블
+		ad_crud = new View_Admin_crud();
 		frame = new JFrame();
+		
 		usr_panel = new JPanel();
 		usr_button = new JButton[] { 
 				new JButton("책 대출"), new JButton("책 반납"), 
@@ -35,7 +39,7 @@ class View_User_crud {
 				new JButton("종료") 
 		};
 		column = new String[] {"책 번호", "책 이름", "저자", "출판사"};
-		rowData = new Object[][] {};
+		rowData = ad_crud.rowData;
 		model = new DefaultTableModel(rowData, column);
 		table = new JTable(model);
 		scroll = new JScrollPane(table);

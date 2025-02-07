@@ -7,7 +7,6 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 class BookUpdate implements BookProcess {
-
 	@Override
 	public void exec(ArrayList<BookInfo> books) {
 		Scanner sc = new Scanner(System.in);
@@ -26,9 +25,10 @@ class BookUpdate implements BookProcess {
 			}
 		}
 	}
+	
 	@Override
-	public void exec(ArrayList<BookInfo> books, View_Admin_crud ad_crud) {
-		int upNum = Integer.parseInt(JOptionPane.showInputDialog("수정할 번호를 입력해주세요"));
+	public void exec(ArrayList<BookInfo> books,  ArrayList<MyBookInfo> myBooks, View_Admin_crud ad_crud, View_User_crud usr_crud) {
+		int upNum = Integer.parseInt(JOptionPane.showInputDialog("수정할 책 번호를 입력해주세요"));
 		
 		int findNum = -1;
 		int cnt=0;
@@ -52,6 +52,10 @@ class BookUpdate implements BookProcess {
 				ad_crud.model.setValueAt(title, cnt, 1);
 				ad_crud.model.setValueAt(author, cnt, 2);
 				ad_crud.model.setValueAt(publisher, cnt, 3);
+				
+				usr_crud.model.setValueAt(title, cnt, 1);
+				usr_crud.model.setValueAt(author, cnt, 2);
+				usr_crud.model.setValueAt(publisher, cnt, 3);
 				findNum=-1;
 			}
 		}

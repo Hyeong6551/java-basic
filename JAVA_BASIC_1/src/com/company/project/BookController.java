@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class BookController {
 	public static void main(String[] args) {
 		ArrayList<BookInfo> list = new ArrayList<>();
-		ArrayList<myBookInfo> myList = new ArrayList<>();
+		ArrayList<MyBookInfo> myList = new ArrayList<>();
 		
 		BookProcess controller = null;
 		BookProcess [] crud = {new BookCreate(), new BookUpdate(), new BookDelete() };

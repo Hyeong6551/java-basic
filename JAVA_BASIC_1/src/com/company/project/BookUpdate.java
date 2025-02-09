@@ -29,9 +29,10 @@ class BookUpdate implements BookProcess {
 	@Override
 	public void exec(ArrayList<BookInfo> books,  ArrayList<MyBookInfo> myBooks, View_Admin_crud ad_crud, View_User_crud usr_crud) {
 		int upNum = Integer.parseInt(JOptionPane.showInputDialog("수정할 책 번호를 입력해주세요"));
-		
 		int findNum = -1;
-		int cnt=0;
+		int cnt=0;	
+		boolean run = false;
+		
 		Iterator <BookInfo> iter = books.iterator();
 		while(iter.hasNext()) {
 			if(iter.next().getNo() == upNum ) { findNum = cnt; break; }
@@ -40,11 +41,18 @@ class BookUpdate implements BookProcess {
 		
 		if(findNum ==-1) { JOptionPane.showMessageDialog(null, "존재하지 않는 번호입니다."); return; }
 		else {
+			run=true;
 			String title = JOptionPane.showInputDialog("수정할 제목을 입력해주세요"); 
 			String author = JOptionPane.showInputDialog("수정할 저자를 입력해주세요."); 
 			String publisher = JOptionPane.showInputDialog("수정할 출판사를 입력해주세요."); 
+			for(BookInfo b : books) {
+				if(b.isBookState()==false) {
+					JOptionPane.showMessageDialog(null, "누군가 대출받고 있는 책이므로 변경할 수 없습니다."); 
+					run=false; break;
+				}
+			}
 			
-			if(title != null && author != null && publisher != null) {
+			if(title != null && author != null && publisher != null && run) {
 				books.get(cnt).setTitle(title);
 				books.get(cnt).setAuthor(author);
 				books.get(cnt).setPublisher(publisher);
@@ -53,11 +61,13 @@ class BookUpdate implements BookProcess {
 				ad_crud.model.setValueAt(author, cnt, 2);
 				ad_crud.model.setValueAt(publisher, cnt, 3);
 				
-				usr_crud.model.setValueAt(title, cnt, 1);
-				usr_crud.model.setValueAt(author, cnt, 2);
-				usr_crud.model.setValueAt(publisher, cnt, 3);
+				usr_crud.model[0].setValueAt(title, cnt, 1);
+				usr_crud.model[0].setValueAt(author, cnt, 2);
+				usr_crud.model[0].setValueAt(publisher, cnt, 3);
 				findNum=-1;
 			}
 		}
+		
+
 	}
 }

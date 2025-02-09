@@ -34,7 +34,7 @@ class UserDelete implements UserProcess {
 			if(iter.next().getNo() == no ) {find = cnt; iter.remove(); break;}
 			cnt++;
 		}
-		
+
 		if( find == -1 ) { JOptionPane.showMessageDialog(null,"번호를 다시 확인해주세요");	return; }
 		crud.model.removeRow(cnt);
 	}

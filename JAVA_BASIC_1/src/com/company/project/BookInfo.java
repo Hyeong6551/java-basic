@@ -16,7 +16,8 @@ class BookInfo {
 	public void setAuthor(String author) { this.author = author; }
 	public String getPublisher() { return publisher; }
 	public void setPublisher(String publisher) { this.publisher = publisher; }
-	public boolean isBookState() { return bookState; } public void setBookState(boolean bookState) { this.bookState = bookState; }
+	public boolean isBookState() { return bookState; } 
+	public void setBookState(boolean bookState) { this.bookState = bookState; }
 	
 	public BookInfo() { super(); }
 	public BookInfo(int no) { super(); this.no = no; }

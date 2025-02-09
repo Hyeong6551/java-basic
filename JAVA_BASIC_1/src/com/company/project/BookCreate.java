@@ -13,7 +13,7 @@ class BookCreate implements BookProcess{
 		System.out.print("book author? > ");		String author = sc.next();
 		System.out.print("book publisher? > ");		String publisher = sc.next();
 		
-		books.add(new BookInfo(title, author, publisher, false));
+		books.add(new BookInfo(title, author, publisher, true));
 		System.out.println("제목 : "+title+" | 저자 : "+author+" | 출판사 : "+publisher);
 		System.out.println("현재 책 수량 : "+BookInfo.cnt);
 	}
@@ -24,9 +24,11 @@ class BookCreate implements BookProcess{
 		String author = JOptionPane.showInputDialog("저자를 입력해주세요");
 		String publisher = JOptionPane.showInputDialog("출판사를 입력해주세요");
 		
-		books.add(new BookInfo(title, author, publisher, false));
+		books.add(new BookInfo(title, author, publisher, true));
 		Object[] data = { BookInfo.cnt, title, author, publisher };
 		ad_crud.model.addRow(data);
-		usr_crud.model.addRow(data);
+		usr_crud.model[0].addRow(data);
+		
+		for(BookInfo b : books) { b.setBookState(true); break; }
 	}
 }

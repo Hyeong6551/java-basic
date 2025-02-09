@@ -30,7 +30,7 @@ class use_Book_mvc{
 		process = new BookProcess[] {
 				new BookCreate(), new BookUpdate(), 
 				new BookDelete(), new MyBookBorrow(),
-				new MyBookReturn()
+				new MyBookReturn(), new MyBookRead()
 		};
 	}
 	
@@ -42,6 +42,8 @@ class use_Book_mvc{
 				intro.frame.dispose();
 				admin.Show_Admin();
 				start_Admin();
+				start_User();
+				return;
 			}
 		});
 		
@@ -50,14 +52,9 @@ class use_Book_mvc{
 			public void actionPerformed(ActionEvent e) {
 				intro.frame.dispose();
 				user.Show_User();
+				start_Admin();
 				start_User();
-			}
-		});
-		
-		intro.button[2].addActionListener(new ActionListener() {	// 종료
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				intro.frame.dispose();
+				return;
 			}
 		});
 	}
@@ -90,7 +87,7 @@ class use_Book_mvc{
 			public void actionPerformed(ActionEvent e) {
 				admin.frame.dispose();
 				user.Show_User();
-				start_User();
+				return;
 			}
 		});
 		
@@ -100,6 +97,7 @@ class use_Book_mvc{
 				admin.frame.dispose();
 			}
 		});
+		return;
 	}
 	
 	//////////////////////////////////////		사용자 페이지
@@ -118,12 +116,19 @@ class use_Book_mvc{
 			}
 		});
 		
+		user.usr_button[2].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller = process[5];	controller.exec(books, myBooks, admin, user);
+			}
+		});
+		
 		user.usr_button[3].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				user.frame.dispose();
 				admin.Show_Admin();
-				start_Admin();
+				return;
 			}
 		});
 		
@@ -133,6 +138,7 @@ class use_Book_mvc{
 				user.frame.dispose();
 			}
 		});
+		return;
 	}
 }
 

@@ -27,7 +27,7 @@ class MyBookReturn implements BookProcess{
 		if(findNum==-1) {
 			JOptionPane.showMessageDialog(null, "존재하지 않는 번호입니다."); return;
 		} else {
-			usr_crud.model2.removeRow(cnt);
+			usr_crud.model[1].removeRow(cnt);
 			findNum=-1;
 		}
 	}

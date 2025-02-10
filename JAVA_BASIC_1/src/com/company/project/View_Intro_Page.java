@@ -22,8 +22,8 @@ class View_Intro_Page {
 		frame = new JFrame("선택 페이지");
 		button = new JButton[] { new JButton("<html>관리자 <br>페이지</html>"), new JButton("<html>사용자 <br>페이지</html>") };
 		font = new Font[] { new Font("맑은 고딕",Font.BOLD, 55),new Font("맑은 고딕",Font.BOLD, 60)};
-		icon = new ImageIcon[] {new ImageIcon("images\\book.png"), new ImageIcon("images/waterfall.jpg")};
-		label = new JLabel[] {new JLabel(icon[0]), new JLabel(icon[1]), new JLabel("도서 관리 프로그램")};
+		icon = new ImageIcon[] { new ImageIcon("images\\book.png"), new ImageIcon("images/waterfall.jpg")};
+		label = new JLabel[] { new JLabel(icon[0]), new JLabel(icon[1]), new JLabel("도서 관리 프로그램")};
 		color = new Color[] {
 				new Color(207,240,158),new Color(121,189,154),
 				new Color(59,134,134),new Color(58,81,52)

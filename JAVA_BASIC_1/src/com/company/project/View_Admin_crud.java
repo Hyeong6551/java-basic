@@ -30,6 +30,7 @@ class View_Admin_crud{
 	Font[] font;
 	Color[] color;
 
+
 	// 생성자
 	public View_Admin_crud() {
 		frame = new JFrame("관리자 전용 페이지");
@@ -64,6 +65,7 @@ class View_Admin_crud{
 
 	// function
 	public void Show_Table() {
+
 		// 테이블 설정
 		frame.add(scroll);
 		frame.add(label);

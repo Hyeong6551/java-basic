@@ -28,7 +28,6 @@ class BookCreate implements BookProcess{
 		Object[] data = { BookInfo.cnt, title, author, publisher };
 		ad_crud.model.addRow(data);
 		usr_crud.model[0].addRow(data);
-		
-		for(BookInfo b : books) { b.setBookState(true); break; }
+		System.out.println(books);
 	}
 }

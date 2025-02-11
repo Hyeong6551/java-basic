@@ -42,7 +42,7 @@ class BookInfo {
 	@Override
 	public String toString() {
 		return "BookInfo [no=" + no + ", title=" + title + ", author=" + author + ", publisher=" + publisher
-				+ ", bookState=" + bookState + "]";
+				+ ", bookState=" + bookState + "]\n";
 	}
 	
 

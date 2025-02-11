@@ -28,13 +28,13 @@ class use_Book_mvc{
 		user = new View_User_crud();
 		
 		process = new BookProcess[] {
-				new BookCreate(), new BookUpdate(), 
-				new BookDelete(), new MyBookBorrow(),
-				new MyBookReturn(), new MyBookRead()
+			new BookCreate(), new BookUpdate(), 
+			new BookDelete(), new MyBookBorrow(),
+			new MyBookReturn(), new MyBookRead()
 		};
 	}
 	
-	// 행위 - 기능 - 멤버함수
+	// function
 	public void start_Intro() {
 		intro.button[0].addActionListener(new ActionListener() {	// 관리자 페이지
 			@Override
@@ -43,7 +43,6 @@ class use_Book_mvc{
 				admin.Show_Admin();
 				start_Admin();
 				start_User();
-				return;
 			}
 		});
 		
@@ -54,7 +53,6 @@ class use_Book_mvc{
 				user.Show_User();
 				start_Admin();
 				start_User();
-				return;
 			}
 		});
 	}
@@ -87,7 +85,6 @@ class use_Book_mvc{
 			public void actionPerformed(ActionEvent e) {
 				admin.frame.dispose();
 				user.Show_User();
-				return;
 			}
 		});
 		
@@ -97,48 +94,45 @@ class use_Book_mvc{
 				admin.frame.dispose();
 			}
 		});
-		return;
 	}
 	
 	//////////////////////////////////////		사용자 페이지
 	public void start_User() {
-		user.usr_button[0].addActionListener(new ActionListener() {
+		user.usr_button[0].addActionListener(new ActionListener() {		//  책 대출
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller = process[3];	controller.exec(books, myBooks, admin, user);
 			}
 		});
 		
-		user.usr_button[1].addActionListener(new ActionListener() {
+		user.usr_button[1].addActionListener(new ActionListener() {		// 책 반납
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller = process[4];	controller.exec(books, myBooks, admin, user);
 			}
 		});
 		
-		user.usr_button[2].addActionListener(new ActionListener() {
+		user.usr_button[2].addActionListener(new ActionListener() {		// 책 조회
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller = process[5];	controller.exec(books, myBooks, admin, user);
 			}
 		});
 		
-		user.usr_button[3].addActionListener(new ActionListener() {
+		user.usr_button[3].addActionListener(new ActionListener() {		// 관리자 페이지 이동
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				user.frame.dispose();
 				admin.Show_Admin();
-				return;
 			}
 		});
 		
-		user.usr_button[4].addActionListener(new ActionListener() {
+		user.usr_button[4].addActionListener(new ActionListener() {		// 종료
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				user.frame.dispose();
 			}
 		});
-		return;
 	}
 }
 

@@ -33,7 +33,7 @@ class View_Intro_Page {
 	public void Show_Intro(){
 		frame.setLayout(null);
 		frame.setResizable(false);
-		frame.setLocation(300,300);
+//		frame.setLocation(300,300);
 		for(int i=0;i<button.length;i++) {
 			button[i].setBackground(color[1]);
 			button[i].setForeground(color[3]);

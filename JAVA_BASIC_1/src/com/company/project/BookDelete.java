@@ -27,33 +27,40 @@ class BookDelete implements BookProcess{
 	
 	@Override
 	public void exec(ArrayList<BookInfo> books, ArrayList<MyBookInfo> myBooks, View_Admin_crud ad_crud, View_User_crud usr_crud) {
-		int bookNo = Integer.parseInt(JOptionPane.showInputDialog("삭제할 책 번호를 입력해주쉐요"));
-		int findNum = -1;
-		int cnt=0;
-		boolean run = false;
-		
-		Iterator <BookInfo> iter = books.iterator();
-		while(iter.hasNext()) {
-			if(iter.next().getNo() == bookNo ) { findNum = cnt; iter.remove(); break; }
-			cnt++;
-		}
-		
-		// 입력한 번호가 대출받은 책이라면 - 삭제가 불가능한 책
-		if(findNum==-1) {
-			JOptionPane.showMessageDialog(null, "존재하지 않는 번호입니다."); return; }
-		else {
-			run=true;
-			for(BookInfo b : books) {
-				if(b.isBookState()==false) {
-					JOptionPane.showMessageDialog(null, "누군가 대출받고 있는 책이므로 삭제할 수 없습니다."); 
-					run=false; break;
+
+		try {		
+			int bookNo = Integer.parseInt(JOptionPane.showInputDialog("삭제할 책 번호를 입력해주쉐요"));
+	
+			int findNum = -1;
+			int cnt=0;
+			boolean run = false;
+			
+			if(run) {
+				Iterator <BookInfo> iter = books.iterator();
+				while(iter.hasNext()) {
+					if(iter.next().getNo() == bookNo ) { findNum = cnt; iter.remove(); break; }
+					cnt++;
 				}
 			}
-		}
-		if(run) {
-			ad_crud.model.removeRow(cnt);
-			usr_crud.model[0].removeRow(cnt);
-			findNum=-1;
-		}
+			
+			if(findNum==-1) {
+				JOptionPane.showMessageDialog(null, "존재하지 않는 번호입니다."); return; }
+			else {
+				run=true;
+//				for(BookInfo b : books) {
+//					if(b.isBookState()==false) {
+//						JOptionPane.showMessageDialog(null, "누군가 대출받고 있는 책이므로 변경할 수 없습니다.");
+//						run=false; break;
+//					}
+//				}
+					ad_crud.model.removeRow(cnt);
+					usr_crud.model[0].removeRow(cnt);
+					findNum=-1;
+			}
+			
+
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "올바른 값을 입력해주세요.");
+		} 
 	}
 }

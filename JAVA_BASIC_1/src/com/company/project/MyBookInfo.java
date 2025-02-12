@@ -11,7 +11,7 @@ class MyBookInfo{
 	
 	public MyBookInfo() { super(); }
 
-	public MyBookInfo(int mno, String name, int no, int bookNo, String date) {
+	public MyBookInfo(int mno, String name, int bookNo, String date) {
 		super();
 		this.mno = mno;
 		this.name = name;
@@ -19,11 +19,11 @@ class MyBookInfo{
 		this.date = date;
 	}
 	
-	public MyBookInfo(String name, int no) {
+	public MyBookInfo(String name, BookInfo book) {
 		super();
 		this.mno = ++cnt;
 		this.name = name;
-		this.bookNo = no;
+		this.bookNo = book.getNo();
 		Calendar today = Calendar.getInstance();
 		this.date = today.get(1) + "-" + today.get(2) + "-" + today.get(5);
 	}

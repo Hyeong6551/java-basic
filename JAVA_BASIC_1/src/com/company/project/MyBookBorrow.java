@@ -18,10 +18,11 @@ class MyBookBorrow implements BookProcess{
 			String name = JOptionPane.showInputDialog("당신의 이름을 입력해주세요");
 			int bookNo =  Integer.parseInt(JOptionPane.showInputDialog("대출할 책의 번호를 입력하세요"));
 			boolean run=false;
+			BookInfo no = new BookInfo(bookNo);
 			
 			Iterator <BookInfo> iter = books.iterator();
 			while(iter.hasNext()) {
-				if(iter.next().getNo() == bookNo) { myBooks.add(new MyBookInfo(name, bookNo)); run=true; break; }
+				if(iter.next().getNo() == bookNo) { myBooks.add(new MyBookInfo(name, no)); run=true; break; }
 			}
 			
 			if (run) {

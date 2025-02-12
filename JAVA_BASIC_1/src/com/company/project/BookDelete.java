@@ -22,7 +22,6 @@ class BookDelete implements BookProcess{
 				System.out.println("삭제완료");
 			}
 		}
-		
 	}
 	
 	@Override
@@ -30,34 +29,28 @@ class BookDelete implements BookProcess{
 
 		try {		
 			int bookNo = Integer.parseInt(JOptionPane.showInputDialog("삭제할 책 번호를 입력해주쉐요"));
-	
 			int findNum = -1;
-			int cnt=0;
-			boolean run = false;
+			boolean state = true;
 			
-			if(run) {
-				Iterator <BookInfo> iter = books.iterator();
-				while(iter.hasNext()) {
-					if(iter.next().getNo() == bookNo ) { findNum = cnt; iter.remove(); break; }
-					cnt++;
+			Iterator <BookInfo> iter = books.iterator();
+			while(iter.hasNext()) {
+				BookInfo temp = iter.next();
+				if(temp.getNo() == bookNo ) { 
+					findNum = temp.getNo(); state = temp.isBookState();
+					if(findNum==-1) {
+						JOptionPane.showMessageDialog(null, "존재하지 않는 번호입니다."); return; 
+					} else {
+						if(state) {
+							iter.remove();
+							ad_crud.model.removeRow(findNum-1);
+							usr_crud.model[0].removeRow(findNum-1);
+						} else {
+							JOptionPane.showMessageDialog(null, "현재 대출받고 있는 책이므로 변경할 수 없습니다.");
+						}
+					}
 				}
 			}
-			
-			if(findNum==-1) {
-				JOptionPane.showMessageDialog(null, "존재하지 않는 번호입니다."); return; }
-			else {
-				run=true;
-//				for(BookInfo b : books) {
-//					if(b.isBookState()==false) {
-//						JOptionPane.showMessageDialog(null, "누군가 대출받고 있는 책이므로 변경할 수 없습니다.");
-//						run=false; break;
-//					}
-//				}
-					ad_crud.model.removeRow(cnt);
-					usr_crud.model[0].removeRow(cnt);
-					findNum=-1;
-			}
-			
+			System.out.println(state);
 
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "올바른 값을 입력해주세요.");

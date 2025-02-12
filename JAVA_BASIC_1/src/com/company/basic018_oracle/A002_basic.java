@@ -36,7 +36,6 @@ public class A002_basic {
 			if(rset != null) {try { rset.close();} catch (SQLException e) { e.printStackTrace(); }}
 			if(stmt != null) {try { stmt.close();} catch (SQLException e) { e.printStackTrace(); }}
 			if(conn != null) {try { conn.close();} catch (SQLException e) { e.printStackTrace(); }}
-			
 		}
 	}
 }

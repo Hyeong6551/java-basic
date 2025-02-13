@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-class BookCreate implements BookProcess{
+public class BookCreate implements BookProcess{
 	@Override
 	public void exec(ArrayList<BookInfo> books) {
 		Scanner sc = new Scanner(System.in);
@@ -29,5 +29,11 @@ class BookCreate implements BookProcess{
 		ad_crud.model.addRow(data);
 		usr_crud.model[0].addRow(data);
 		System.out.println(books);
+	}
+
+	@Override
+	public void exec(View_Admin_crud ad_crud, View_User_crud usr_crud) {
+		
+		
 	}
 }

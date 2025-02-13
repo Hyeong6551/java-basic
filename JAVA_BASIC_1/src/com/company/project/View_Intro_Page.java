@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class View_Intro_Page {
+public class View_Intro_Page {
 	JFrame frame;
 	JPanel panel;
 	JButton[] button;

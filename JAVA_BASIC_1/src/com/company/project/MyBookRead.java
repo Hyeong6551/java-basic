@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-class MyBookRead implements BookProcess{
+public class MyBookRead implements BookProcess{
 
 	@Override
 	public void exec(ArrayList<BookInfo> books) {

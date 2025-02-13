@@ -1,11 +1,12 @@
 package com.company.project;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-class MyBookBorrow implements BookProcess{
+public class MyBookBorrow implements BookProcess{
 
 	@Override
 	public void exec(ArrayList<BookInfo> books) {
@@ -26,9 +27,10 @@ class MyBookBorrow implements BookProcess{
 			}
 			
 			if (run) {
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				for(BookInfo b : books) {
 					if (b.getNo()==bookNo) {
-						Object[] data = { MyBookInfo.cnt, name, bookNo ,b.getTitle(), myBooks.get(0) };
+						Object[] data = { MyBookInfo.cnt, name, bookNo ,b.getTitle(), sdf.format(System.currentTimeMillis()) };
 						b.setBookState(false);
 						usr_crud.model[1].addRow(data);
 						System.out.println(books); break;

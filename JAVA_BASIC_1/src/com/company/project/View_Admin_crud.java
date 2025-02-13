@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-class View_Admin_crud{
+public class View_Admin_crud{
 	// 테이블
 	JFrame frame;
 	JPanel panel;

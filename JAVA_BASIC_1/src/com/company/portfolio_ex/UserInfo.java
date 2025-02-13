@@ -21,7 +21,7 @@ public class UserInfo {
 	
 	public UserInfo(String name, String email) {
 		super();
-		this.no = ++cnt;
+//		this.no = ++cnt;
 		this.name = name;
 		this.email = email;
 		Calendar today = Calendar.getInstance();

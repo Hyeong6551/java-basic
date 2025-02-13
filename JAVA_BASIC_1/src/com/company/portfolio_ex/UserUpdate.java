@@ -40,4 +40,23 @@ class UserUpdate implements UserProcess {
 		user.get(cnt).setEmail(email);
 		crud.model.setValueAt(email, cnt, 2);
 	}
+
+	@Override
+	public void exec(View_crud crud) {
+		// 1. 수정할 유저번호/이메일 입력
+		int no = Integer.parseInt( JOptionPane.showInputDialog("수정할 번호를 입력해주세요"));
+		String email = JOptionPane.showInputDialog("수정할 이메일을 입력해주세요");
+		
+		// 2. db에서 수정
+		UserDao dao = new UserDao();	dao.getConnection();
+		UserInfo user = new UserInfo();
+		user.setNo(no);		user.setEmail(email);
+		dao.update(user);
+		
+		// 3. 화면처리
+//		int tempNo = user.getNo();
+//		crud.model.setValueAt(email, tempNo, 2);
+		new UserRead().exec(crud);
+		
+	}
 }

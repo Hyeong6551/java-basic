@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-class View_User_crud {
+public class View_User_crud {
 	// 테이블
 	JFrame frame;
 	JButton button;

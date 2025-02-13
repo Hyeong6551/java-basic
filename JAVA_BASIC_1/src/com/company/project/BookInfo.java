@@ -1,6 +1,6 @@
 package com.company.project;
 
-class BookInfo {
+public class BookInfo {
 	public static int cnt=0;
 	private int no;
 	private String title;
@@ -32,7 +32,7 @@ class BookInfo {
 	
 	public BookInfo(String title, String author, String publisher, boolean bookState) {
 		super();
-		this.no = ++cnt;
+//		this.no = ++cnt;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;

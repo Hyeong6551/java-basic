@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-class BookUpdate implements BookProcess {
+public class BookUpdate implements BookProcess {
 	@Override
 	public void exec(ArrayList<BookInfo> books) {
 		Scanner sc = new Scanner(System.in);

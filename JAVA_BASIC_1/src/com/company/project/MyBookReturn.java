@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-class MyBookReturn implements BookProcess{
+public class MyBookReturn implements BookProcess{
 
 	@Override
 	public void exec(ArrayList<BookInfo> books) {

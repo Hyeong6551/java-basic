@@ -32,7 +32,7 @@ public class UserMain {
 		users = new ArrayList<>();
 		intro = new View_intro();	intro.show();
 		crud = new View_crud();
-		process = new UserProcess[] {new UserCreate(), new UserRead(), new UserUpdate(), new UserDelete() };
+		process = new UserProcess[] { new UserCreate(), new UserRead(), new UserUpdate(), new UserDelete() };
 	}
 	
 	//// 행위 - 기능 - 멤버함수
@@ -49,24 +49,25 @@ public class UserMain {
 		});
 	}
 	public void member() {
+		new UserRead().exec(crud);	// 초기화
 		crud.button[0].addActionListener(new ActionListener() {	// 등록
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[0];	controller.exec(users,crud);	// 처리하고 view로 넘기기
+				controller = process[0];	controller.exec(crud);	// 처리하고 view로 넘기기
 			}
 		});
 
 		crud.button[1].addActionListener(new ActionListener() {	// 수정
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[2];	controller.exec(users,crud);	// 처리하고 view로 넘기기
+				controller = process[2];	controller.exec(crud);	// 처리하고 view로 넘기기
 			}
 		});
 		
 		crud.button[2].addActionListener(new ActionListener() {	// 삭제
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[3];	controller.exec(users,crud);	// 처리하고 view로 넘기기
+				controller = process[3];	controller.exec(crud);	// 처리하고 view로 넘기기
 			}
 		});
 		
@@ -81,6 +82,4 @@ public class UserMain {
 	public static void main(String[] args) {
 		new UserMain().intro();
 	}
-
-
 }

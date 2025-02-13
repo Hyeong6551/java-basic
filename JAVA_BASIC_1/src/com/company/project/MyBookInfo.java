@@ -10,7 +10,6 @@ class MyBookInfo{
 	private String date;
 	
 	public MyBookInfo() { super(); }
-
 	public MyBookInfo(int mno, String name, int bookNo, String date) {
 		super();
 		this.mno = mno;
@@ -32,11 +31,12 @@ class MyBookInfo{
 	public String getName() { return name; } public void setName(String name) { this.name = name; }
 	public String getDate() { return date; } public void setDate(String date) { this.date = date; }
 	public int getBookNo() { return bookNo; }  public void setBookNo(int bookNo) { this.bookNo = bookNo; }
-
 	@Override
 	public String toString() {
-		return date;
+		return "MyBookInfo [mno=" + mno + ", name=" + name + ", bookNo=" + bookNo + ", date=" + date + "]";
 	}
+
+
 	
 	
 }

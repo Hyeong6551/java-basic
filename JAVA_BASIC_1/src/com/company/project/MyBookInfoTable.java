@@ -27,3 +27,12 @@ public class MyBookInfoTable {
 		}
 	}
 }
+/*
+CREATE SEQUENCE seq_myBookInfo;
+
+CREATE TABLE MyBookInfo (
+    mno NUMBER PRIMARY KEY NOT NULL,
+    name VARCHAR2(20) NOT NULL,
+    bno NUMBER CONSTRAINT bno_fk REFERENCES bookinfo(bno),
+    bdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+*/

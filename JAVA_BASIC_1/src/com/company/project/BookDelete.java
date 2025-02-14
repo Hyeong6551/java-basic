@@ -26,7 +26,6 @@ public class BookDelete implements BookProcess{
 	
 	@Override
 	public void exec(ArrayList<BookInfo> books, ArrayList<MyBookInfo> myBooks, View_Admin_crud ad_crud, View_User_crud usr_crud) {
-
 		try {		
 			int bookNo = Integer.parseInt(JOptionPane.showInputDialog("삭제할 책 번호를 입력해주쉐요"));
 			int findNum = -1;
@@ -51,9 +50,44 @@ public class BookDelete implements BookProcess{
 				}
 			}
 			System.out.println(state);
-
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "올바른 값을 입력해주세요.");
 		} 
+	}
+
+	@Override
+	public void exec(View_Admin_crud ad_crud, View_User_crud usr_crud) {
+		try {
+			int bookNo = Integer.parseInt(JOptionPane.showInputDialog("삭제할 책 번호를 입력해주쉐요"));
+			BookDao dao = new BookDao();				
+			dao.getConnection();	
+			
+			ArrayList<BookInfo> list = dao.readAllBook();
+			Iterator<BookInfo> iter = list.iterator();
+			while(iter.hasNext()) {
+				BookInfo temp = iter.next();
+				if(temp.getNo() == bookNo){ 
+					Boolean bState = temp.isBookState(); 
+					if(bState) {
+						dao.getConnection();	
+						dao.deleteBook(bookNo);
+					} else {
+						JOptionPane.showMessageDialog(null, "현재 대출중인 책이므로 삭제가 불가능합니다.");
+					}
+				}
+			}
+
+			ArrayList<BookInfo> mlist = new ArrayList<>();
+			Iterator<BookInfo> miter =mlist.iterator();
+			while(miter.hasNext()) {
+				BookInfo mtemp = miter.next();
+				ad_crud.model.removeRow(mtemp.getNo());
+				usr_crud.model[0].removeRow(mtemp.getNo());
+				break;
+			}
+			new BookRead().exec(ad_crud, usr_crud);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "올바른 값을 입력해주세요.");
+		}
 	}
 }

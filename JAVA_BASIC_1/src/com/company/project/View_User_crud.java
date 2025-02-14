@@ -45,8 +45,7 @@ public class View_User_crud {
 		// 사용자 페이지 버튼
 		usr_button = new JButton[] { 
 				new JButton("책 대출"), new JButton("책 반납"), 
-				new JButton("책 조회"), new JButton("관리자 페이지"), 
-				new JButton("종료") 
+				new JButton("관리자 페이지"), new JButton("종료") 
 		};
 		column = new String[][] { new String[] {"책 번호", "책 이름", "저자", "출판사"}, new String[] {"번호", "사용자", "책 번호", "책 제목", "빌린 날짜"} };
 		rowData = new Object[][][] { ad_crud.rowData, new Object[][] {} };
@@ -104,10 +103,14 @@ public class View_User_crud {
 		Show_Table();
 		frame.setLayout(null);
 		frame.setResizable(false);
-		for (int i=0;i<usr_button.length;i++) {
+		for(int i=0;i<usr_button.length;i++) {
 			frame.add(usr_button[i]);
+			if(i>=2) {
+				usr_button[i].setBounds(350+(i*300), 750, 250, 75);
+			} else {
+				usr_button[i].setBounds(50+(i*300), 750, 250, 75);
+			}
 			usr_button[i].setFont(font[0]);
-			usr_button[i].setBounds(50+(i*300), 750, 250, 75);
 			usr_button[i].setBackground(color[1]);
 			usr_button[i].setForeground(color[0]);
 			usr_button[i].setBorderPainted(false);

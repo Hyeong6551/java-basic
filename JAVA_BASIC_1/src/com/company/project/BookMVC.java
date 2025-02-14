@@ -30,7 +30,7 @@ class use_Book_mvc{
 		process = new BookProcess[] {
 			new BookCreate(), new BookUpdate(), 
 			new BookDelete(), new MyBookBorrow(),
-			new MyBookReturn(), new MyBookRead()
+			new MyBookReturn()
 		};
 	}
 	
@@ -58,25 +58,26 @@ class use_Book_mvc{
 	}
 	
 	//////////////////////////////////////		관리자 페이지
-	public void start_Admin() {			
+	public void start_Admin() {		
+		new BookRead().exec(admin, user);
 		admin.ad_button[0].addActionListener(new ActionListener() {		// 책 추가
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[0];	controller.exec(books, myBooks, admin, user);
+				controller = process[0];	controller.exec(admin, user);
 			}
 		});
 		
 		admin.ad_button[1].addActionListener(new ActionListener() {		// 책 변경
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[1];	controller.exec(books, myBooks, admin, user);
+				controller = process[1];	controller.exec(admin, user);
 			}
 		});
 		
 		admin.ad_button[2].addActionListener(new ActionListener() {		// 책 삭제
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[2];	controller.exec(books, myBooks, admin, user);
+				controller = process[2];	controller.exec(admin, user);
 			}
 		});
 		
@@ -98,28 +99,22 @@ class use_Book_mvc{
 	
 	//////////////////////////////////////		사용자 페이지
 	public void start_User() {
+		new BookRead().exec(admin, user);
 		user.usr_button[0].addActionListener(new ActionListener() {		//  책 대출
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[3];	controller.exec(books, myBooks, admin, user);
+				controller = process[3];	controller.exec(admin, user);
 			}
 		});
 		
 		user.usr_button[1].addActionListener(new ActionListener() {		// 책 반납
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller = process[4];	controller.exec(books, myBooks, admin, user);
+				controller = process[4];	controller.exec(admin, user);
 			}
 		});
 		
-		user.usr_button[2].addActionListener(new ActionListener() {		// 책 조회
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller = process[5];	controller.exec(books, myBooks, admin, user);
-			}
-		});
-		
-		user.usr_button[3].addActionListener(new ActionListener() {		// 관리자 페이지 이동
+		user.usr_button[2].addActionListener(new ActionListener() {		// 관리자 페이지 이동
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				user.frame.dispose();
@@ -127,7 +122,7 @@ class use_Book_mvc{
 			}
 		});
 		
-		user.usr_button[4].addActionListener(new ActionListener() {		// 종료
+		user.usr_button[3].addActionListener(new ActionListener() {		// 종료
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				user.frame.dispose();

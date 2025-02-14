@@ -38,3 +38,14 @@ public class BookInfoTable {
 		}
 	}
 }
+
+/*
+create SEQUENCE seq_myBookInfo;
+
+CREATE TABLE BookInfo (
+    bno NUMBER PRIMARY KEY NOT NULL,
+    title VARCHAR2(100) NOT NULL,
+    author VARCHAR2(20) NOT NULL,
+    publisher VARCHAR2(30) NOT NULL,
+    bookState VARCHAR2(5) CHECK (bookState IN('true','false')) NOT NULL);
+*/

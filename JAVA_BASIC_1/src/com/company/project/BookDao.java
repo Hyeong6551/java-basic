@@ -21,11 +21,12 @@ public class BookDao {
 		} catch (Exception e) { e.printStackTrace(); }
 		return conn;
 	}
+	
 	// 책 추가
 	public int createBook(BookInfo book) {
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO BookInfo (no, title, author, publisher, bookState)"
-				+ " VALUES (seq_BookInfo.nextval, ?,?,?,'T')";
+		String sql = "INSERT INTO bookinfo (bno, title, author, publisher, bookState)"
+				+ " VALUES (seq_bookinfo.nextval, ?,?,?,'true')";
 		int result = -1;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -45,7 +46,7 @@ public class BookDao {
 	// 책 변경
 	public int updateBook(BookInfo book) {
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE bookinfo SET title=?, author=?, publisher=? WHERE no=?";
+		String sql = "UPDATE bookinfo SET title=?, author=?, publisher=? WHERE bno=?";
 		int result=-1;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -66,7 +67,7 @@ public class BookDao {
 	// 책 삭제
 	public int deleteBook(int no) {
 		PreparedStatement pstmt = null;
-		String sql = "Delete from bookinfo where no=?";
+		String sql = "Delete from bookinfo where bno=?";
 		int result=-1;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -80,6 +81,7 @@ public class BookDao {
 		}
 		return result;
 	}
+	
 	// 모든 책 불러오기
 	public ArrayList<BookInfo> readAllBook(){
 		PreparedStatement pstmt = null;
@@ -91,7 +93,7 @@ public class BookDao {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				list.add(new BookInfo(
-					rset.getInt("no"), rset.getString("title"), 
+					rset.getInt("bno"), rset.getString("title"), 
 					rset.getString("author"), rset.getString("publisher"), rset.getBoolean("bookState")
 					)
 				);
@@ -110,15 +112,17 @@ public class BookDao {
 	public ArrayList<MyBookInfo> readAllmyBook(){
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = "select * from mybookinfo";
+		String sql = "select mno, name, b.bno, title, bdate "
+				+ "from bookinfo b, mybookinfo m "
+				+ "where b.bno=m.bno";
 		ArrayList<MyBookInfo> list = new ArrayList<>();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				list.add(new MyBookInfo(
-					rset.getInt("mno"),rset.getString("bname"),
-					rset.getInt("bookNo"), rset.getString("bdate")
+				list.add(new MyBookInfo(	// 테이블 별칭쓰면 안됨
+					rset.getInt("mno"), rset.getString("name"),
+					rset.getInt("bno"), rset.getString("title") ,rset.getString("bdate")
 					)
 				);
 			}
@@ -134,11 +138,10 @@ public class BookDao {
 	
 	// 책 대출
 	public int borrowBook(MyBookInfo myBooks) {
-		PreparedStatement pstmt = null, pstmt2 = null;
-		String sql = "INSERT INTO mybookinfo (mno,bname, bookNo, bdate) "
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO mybookinfo (mno,name, bno, bdate) "
 				+ "values(seq_mybookinfo.nextval,?,?,current_timestamp)";
 		int result = -1;
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, myBooks.getName());
@@ -146,42 +149,57 @@ public class BookDao {
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			if( pstmt != null) {try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }}
 			if( conn != null) {try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }}
 		}
-		
-		String sql2 = "Update bookinfo set bookState='F' where no=?";
-		boolean bState;
-		String bStateString;
-		int result2 = -1;
-		
-		ArrayList<BookInfo> book = new ArrayList<>();
-		Iterator<BookInfo> iter = book.iterator();
-		while(iter.hasNext()) {
-			BookInfo temp = iter.next();
-			if(temp.getNo() == myBooks.getBookNo()) { bState = temp.isBookState(); break; }
-		}
-		
+		return result;
+	}
+	
+	// 책 대출 시 책 상태 false;
+	public int borrowBookStateFalse(MyBookInfo myBooks) {
+		PreparedStatement pstmt = null;
+		String sql = "Update bookinfo set bookState='false' where bno=?";
+		int result = -1;
 		try {
-			pstmt2 = conn.prepareStatement(sql2);
-			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, myBooks.getBookNo());
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if( pstmt != null) {try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }}
+			if( conn != null) {try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }}
 		}
-		
-		return result+result2;
-		
+		return result;
 	}
 	
 	// 책 반납
 	public int returnBook(int no) {
 		PreparedStatement pstmt = null;
-		String sql = "delete from mybookinfo where bookNo=?";
+		String sql = "delete from mybookinfo where mno=?";
 		int result = -1;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if( pstmt != null) {try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }}
+			if( conn != null) {try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }}
+		}
+		return result;
+	}
+	
+	// 책 반납 시 책 상태 true
+	public int returnBookStateTrue(MyBookInfo myBooks) {
+		PreparedStatement pstmt = null;
+		String sql = "Update bookinfo set bookState='true' where bno=?";
+		int result = -1;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, myBooks.getBookNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -210,24 +228,32 @@ public class BookDao {
 	
 		// 책 삭제
 //		dao.getConnection();
-//		if(dao.deleteBook(3)>0) {System.out.println("성공");}
+//		if(dao.deleteBook(5)>0) {System.out.println("성공");}
 		
 		// 모든 책 조회
 		dao.getConnection();
 		System.out.println(dao.readAllBook());
 		
 		// 대출받은 책 조회
-//		dao.getConnection();
-//		System.out.println(dao.readAllmyBook());
-		
+		dao.getConnection();
+		System.out.println(dao.readAllmyBook());
+
 		// 책 대출
 //		dao.getConnection();
 //		MyBookInfo myBooks = new MyBookInfo();
-//		myBooks.setBookNo(3); myBooks.setName("hello");
+//		myBooks.setBookNo(27); 
+//		dao.borrowBookStateFalse(myBooks);
+//		dao.getConnection();
+//		myBooks.setBookNo(27); 
+//		myBooks.setName("hello");
 //		dao.borrowBook(myBooks);
 		
 		// 책 반납
 //		dao.getConnection();
-//		if(dao.returnBook(3) > 0) {System.out.println("삭제 성공");};
+//		MyBookInfo myBooks = new MyBookInfo();
+//		myBooks.setBookNo(1);
+//		dao.returnBookStateTrue(myBooks);
+//		dao.getConnection();
+//		if(dao.returnBook(1) > 0) {System.out.println("반납 성공");};
 	}
 }

@@ -33,7 +33,19 @@ public class BookCreate implements BookProcess{
 
 	@Override
 	public void exec(View_Admin_crud ad_crud, View_User_crud usr_crud) {
+		String title = JOptionPane.showInputDialog("책 제목을 입력해주세요");
+		String author = JOptionPane.showInputDialog("저자를 입력해주세요");
+		String publisher = JOptionPane.showInputDialog("출판사를 입력해주세요");
 		
+		BookDao dao = new BookDao(); dao.getConnection();
+		BookInfo book = new BookInfo();
+		book.setTitle(title);	book.setAuthor(author);		
+		book.setPublisher(publisher);	book.setBookState(true);
+		dao.createBook(book);
 		
+		Object[] data = { BookInfo.cnt, title, author, publisher };
+		ad_crud.model.addRow(data);
+		usr_crud.model[0].addRow(data);
+		new BookRead().exec(ad_crud, usr_crud);
 	}
 }

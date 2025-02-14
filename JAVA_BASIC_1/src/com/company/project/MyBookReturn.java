@@ -43,4 +43,31 @@ public class MyBookReturn implements BookProcess{
 			JOptionPane.showMessageDialog(null, "올바른 값을 입력해주세요.");
 		}
 	}
+
+	@Override
+	public void exec(View_Admin_crud ad_crud, View_User_crud usr_crud) {
+		try {
+			int bookNo = Integer.parseInt(JOptionPane.showInputDialog("반납할 번호를 입력해세요"));
+			BookDao dao = new BookDao();	
+			MyBookInfo myBooks = new MyBookInfo();
+			
+			// boolean true
+			dao.getConnection();
+			myBooks.setBookNo(bookNo);
+			dao.returnBookStateTrue(myBooks);
+			
+			dao.getConnection();
+			dao.returnBook(bookNo);
+			
+			ArrayList<MyBookInfo> list = new ArrayList<>();
+			Iterator<MyBookInfo> iter = list.iterator();
+			while(iter.hasNext()) {
+				MyBookInfo temp = iter.next();
+				usr_crud.model[1].removeRow(temp.getMno());
+			}
+			new BookRead().exec(ad_crud, usr_crud);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "올바른 값을 입력해주세요.");
+		}
+	}
 }

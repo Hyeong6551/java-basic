@@ -65,8 +65,39 @@ public class BookUpdate implements BookProcess {
 				} else {
 					JOptionPane.showMessageDialog(null, "현재 대출받고 있는 책이므로 변경할 수 없습니다.");
 				}
-					
 			}
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "올바른 값을 입력해주세요.");
+		}
+	}
+
+	@Override
+	public void exec(View_Admin_crud ad_crud, View_User_crud usr_crud) {
+		try {
+			int upNum = Integer.parseInt(JOptionPane.showInputDialog("수정할 책 번호를 입력해주세요"));
+			BookDao dao = new BookDao();	dao.getConnection();
+			BookInfo books = new BookInfo();
+
+			ArrayList<BookInfo> list = dao.readAllBook();
+			Iterator<BookInfo> iter = list.iterator();
+			while(iter.hasNext()) {
+				BookInfo temp = iter.next();
+				if(temp.getNo() == upNum){ 
+					Boolean bState = temp.isBookState(); 
+					if(bState) {
+						String title = JOptionPane.showInputDialog("수정할 제목을 입력해주세요"); 
+						String author = JOptionPane.showInputDialog("수정할 저자를 입력해주세요."); 
+						String publisher = JOptionPane.showInputDialog("수정할 출판사를 입력해주세요."); 
+						dao.getConnection();
+						books.setNo(upNum);		books.setTitle(title);	books.setAuthor(author);	books.setPublisher(publisher);
+						dao.updateBook(books);
+						new BookRead().exec(ad_crud, usr_crud);
+					} else {
+						JOptionPane.showMessageDialog(null, "현재 대출중인 책이므로 변경이 불가능합니다.");
+					}
+				}
+			}
+
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "올바른 값을 입력해주세요.");
 		}
